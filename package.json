@@ -1,0 +1,24 @@
+{
+  "name": "vaccinationapp",
+  "version": "1.0.0",
+  "description": "This is backend developer assignment",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhreetiman/vaccinationApp.git"
+  },
+  "author": "Dhreetiman Prasad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dhreetiman/vaccinationApp/issues"
+  },
+  "homepage": "https://github.com/Dhreetiman/vaccinationApp#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.2"
+  }
+}
