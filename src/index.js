@@ -7,11 +7,11 @@ app.use(express.json())
 app.use('/', router)
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb+srv://Lucifer:lucifer123@cluster1.578aivq.mongodb.net/VaccinationApp?retryWrites=true&w=majority', {useNewUrlParser: true})
+mongoose.connect('mongodb+srv://sweta1234:sweta5678@sweta2.rwx6dlh.mongodb.net/test', {useNewUrlParser: true})
 .then(()=>console.log("MongoDB Connected"))
 .catch((err)=> console.log(err))
 
-app.listen(process.env.PORT || 6000, () => {
-    console.log("Express is running on port", (process.env.PORT || 6000));
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Express is running on port", (process.env.PORT || 3000));
 })
 

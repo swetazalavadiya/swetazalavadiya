@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const registerUser = async (req, res) => {
     try {
         let data = req.body
-        let {Name, phoneNumber, password, age, pincode, aadhar, ...rest} = data
+        let {Name, phoneNumber, password, age, pincode, aadhar, vaccinationStatus, vaccinationDate, admin,...rest} = data
 
         let obj = {}
 
@@ -14,7 +14,6 @@ const registerUser = async (req, res) => {
 
         if (!validator.isValidInput(Name)) return res.status(400).send({status: false, message: "Please Enter Name"})
         if (!validator.checkName(Name)) return res.status(400).send({status: false, message: "Name should be alphabet only"})
-        data.Name = validator.checkName(Name)
         obj.Name = Name
 
         if (!validator.isValidInput(phoneNumber)) return res.status(400).send({status: false, message: "Please Enter phoneNumber"})
@@ -48,11 +47,8 @@ const registerUser = async (req, res) => {
             if (isDuplicate.aadhar==aadhar) return res.status(400).send({status: false, message: `Given aadhar: ${aadhar} already exist`})
         }
 
-
-
         let userData = await userModel.create(obj)
         return res.status(201).send({status: true, message: "user Created successfully", data: userData})
-        
     } catch (error) {
         res.status(500).send({ status: false, error: error.message })
     }

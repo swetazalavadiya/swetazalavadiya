@@ -4,7 +4,6 @@ const validator = require('../validator/validator')
 const jwt = require('jsonwebtoken')
 
 
-
 const loginAdmin = async (req, res) => {
     try {
         let data = req.body
@@ -28,7 +27,6 @@ const loginAdmin = async (req, res) => {
         let obj = {Id : checkAdmin._id, token: token}
         return res.status(200).send({status: true, message: "login successfull", data: obj})
 
-
     } catch (error) {
         res.status(500).send({ status: false, error: error.message })
     }
@@ -49,29 +47,27 @@ const getUserList = async (req, res) => {
 
         let obj = {}
 
-        if (age || age=='') {
+        if (age) {
             if (!validator.isValidInput(age)) return res.status(400).send({status: false, message: "please provide age"})
             age = Number(age)
             if (!age) return res.status(400).send({status: false, message: "age should be in number"})
             obj.age = age
         }
-        if (pincode || pincode=='') {
+        if (pincode) {
             if (!validator.isValidInput(pincode)) return res.status(400).send({status: false, message: "please provide pincode"})
-            age = Number(pincode)
-            if (!age) return res.status(400).send({status: false, message: "age should be in number"})
+            pincode = Number(pincode)
+            if (!pincode) return res.status(400).send({status: false, message: "pincode should be in number"})
             if (!validator.isValidPin(pincode)) return res.status(400).send({status: false, message: "Please enter valid pincode"})
             obj.pincode = pincode
         }
-        if (vaccineStatus || vaccineStatus=='') {
+        if (vaccineStatus) {
             if (!["none", "First Dose Completed", "All Completed"].includes(vaccineStatus)) return res.status(400).send({status: false, message: `vaccineStatus should be only ["none", "First Dose Completed", "All Completed"]`})
             obj.vaccineStatus = vaccineStatus
         }
 
-
         let findData = await userModel.find(obj)
         if (!findData) return res.status(404).send({status: false, message: "data not found"})
         return res.status(200).send({status: true, message: "found successfully", data: findData})
-
 
     } catch (error) {
         return res.status(500).send({status: false, message: error.message})
@@ -79,6 +75,6 @@ const getUserList = async (req, res) => {
 }
 
 
-module.exports = {loginAdmin, getUserList}
+module.exports = { loginAdmin, getUserList}
 
 

@@ -9,7 +9,6 @@ router.get('/test', function(req, res) {
     return res.status(200).send({status: true, message: 'API is working fine'})
 })
 
-
 router.post('/register', registerUser)
 
 router.post('/login/user', loginUser)
@@ -19,7 +18,5 @@ router.post('/login/admin' , loginAdmin)
 router.get('/user-list',middleware.Authentication, getUserList)
 
 router.post('/vaccine', createVaccineSlot)
-
-
 
 module.exports = router

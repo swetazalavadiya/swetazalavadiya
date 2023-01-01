@@ -41,6 +41,10 @@ const userSchema = new mongoose.Schema({
     vaccinationDate: {
         type: Date,
         default: null
+    },
+    admin:{
+        type:Boolean,
+        default:false
     }
 
 },{timestamps: true})

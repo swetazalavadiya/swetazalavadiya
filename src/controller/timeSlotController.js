@@ -18,12 +18,8 @@ const createVaccineSlot = async (req, res) => {
         if (typeof totalVaccineAvailable != 'number') return res.status(400).send({status: false, message: "This field accepts only Number"})
         if (!validator.isValidNum(totalVaccineAvailable)) return res.status(400).send({status: false, message: "Please enter a valid number"})
 
-        
-        
         let vaccineData = await timeSlotModel.create(data)
-
         return res.status(201).send({status: true, message: "successful", data: vaccineData})
-
 
     } catch (error) {
         if (error._message=="Timeslot validation failed") {
